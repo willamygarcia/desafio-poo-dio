@@ -37,8 +37,8 @@ public class Curso extends Conteudo implements Serializable{
 	}
 
 	public Double calcularXP() {
-		Double XP_atual = getXP();
-		return XP_atual;
+		
+		return getXP();
 	}
 
 

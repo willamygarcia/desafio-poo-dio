@@ -48,7 +48,10 @@ public class Dev implements Serializable{
 				.sum();
 	}
 	
-	public Conteudo exibirCursos() {return null;}
+	public Set<Conteudo> exibirCursos() {
+		
+		return this.getConteudosInscritos();
+		}
 
 	public Integer getId() {
 		return id;
