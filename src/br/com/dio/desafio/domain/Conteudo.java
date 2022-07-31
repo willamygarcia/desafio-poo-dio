@@ -15,6 +15,8 @@ public abstract class Conteudo implements Serializable{
 	
 	private String descricao;
 	
+	private Instrutor instrutor;
+	
 	public abstract Double calcularXP();
 
 	public Integer getId() {
@@ -39,6 +41,13 @@ public abstract class Conteudo implements Serializable{
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	public Instrutor getInstrutor() {
+		return instrutor;
+	}
+	public void setInstrutor(Instrutor instrutor) {
+		this.instrutor = instrutor;
 	}
 	
 	public Double getXP() {

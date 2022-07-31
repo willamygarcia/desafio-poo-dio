@@ -8,12 +8,12 @@ import java.util.Set;
 import br.com.dio.desafio.enumeration.Escolaridade;
 import br.com.dio.desafio.enumeration.TipoPessoa;
 
-public class Dev extends Pessoa{
+public class Dev extends Pessoa {
 
 	private static final long serialVersionUID = 1L;
 
 	private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
-	
+
 	private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
 	public Dev() {
@@ -26,33 +26,29 @@ public class Dev extends Pessoa{
 		this.setCpfCnpj(cpfCnpj);
 		this.setEscolaridade(escolaridade);
 	}
-	
-	public void inscrincao(Bootcamp bootcamp) {
+
+	public void inscricao(Bootcamp bootcamp) {
 		this.getConteudosInscritos().addAll(bootcamp.getConteudos());
 		bootcamp.getDevs().add(this);
 	}
-	public void  progredir() {
-		
+
+	public void progredir() {
 		Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
-		if(conteudo.isPresent()) {
+		if (conteudo.isPresent()) {
 			this.conteudosConcluidos.add(conteudo.get());
 			this.conteudosInscritos.remove(conteudo.get());
-		}else {
+		} else {
 			System.err.println("Você não está inscrito em nenhum Conteúdo");
 		}
 	}
-	
-	public Double calculoTotalXP() {
-		return this.conteudosConcluidos.stream()
-				.mapToDouble(Conteudo::calcularXP)
-				.sum();
-	}
-	
-	public Set<Conteudo> exibirCursos() {
-		
-		return this.getConteudosInscritos();
-		}
 
+	public Double calculoTotalXP() {
+		return this.conteudosConcluidos.stream().mapToDouble(Conteudo::calcularXP).sum();
+	}
+
+	public Set<Conteudo> exibirCursos() {
+		return this.getConteudosInscritos();
+	}
 
 	public Set<Conteudo> getConteudosInscritos() {
 		return conteudosInscritos;
@@ -71,8 +67,10 @@ public class Dev extends Pessoa{
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(this.getId());
+	public String toString() {
+		return "Dev = "+ getId() + ", getNome()=" + getNome() + "]";
 	}
+
 	
+
 }

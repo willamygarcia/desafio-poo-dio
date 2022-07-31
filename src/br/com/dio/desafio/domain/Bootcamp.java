@@ -99,6 +99,21 @@ public class Bootcamp implements Serializable{
 		Bootcamp other = (Bootcamp) obj;
 		return Objects.equals(id, other.id);
 	}
+
+	@Override
+	public String toString() {
+		return "Bootcamp {\n"
+				+ "id = " + id 
+				+ ", nome = " + nome + "\n" 
+				+ ", descricao = " + descricao + "\n"
+				+ ", dataInicial = " + dataInicial+ "\n"
+				+ ", datafinal = " + datafinal + "\n"
+				+ ", devs Matriculados = " + devs + "\n"
+				+ ", conteudos = " + conteudos + "\n" 
+				+ "}";
+	}
+	
+	
 	
 
 }
