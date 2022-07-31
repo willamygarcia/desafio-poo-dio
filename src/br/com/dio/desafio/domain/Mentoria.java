@@ -21,8 +21,8 @@ public class Mentoria extends Conteudo implements Serializable{
 		this.data = data;
 	}
 	
-	public Double calcularXP(Double xp) {
-		Double XP_atual = getXP() + xp;
+	public Double calcularXP() {
+		Double XP_atual = getXP();
 		return XP_atual;
 	}
 

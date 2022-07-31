@@ -3,6 +3,7 @@ package br.com.dio.desafio.domain;
 import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Dev implements Serializable{
@@ -13,9 +14,9 @@ public class Dev implements Serializable{
 	
 	private String nome;
 	
-	private Set<Conteudo> mentorias = new LinkedHashSet<>();
+	private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
 	
-	private Set<Conteudo> cursos = new LinkedHashSet<>();
+	private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
 	public Dev() {
 	}
@@ -26,11 +27,26 @@ public class Dev implements Serializable{
 		this.nome = nome;
 	}
 	
-	public void inscrincao() {
+	public void inscrincao(Bootcamp bootcamp) {
+		this.getConteudosInscritos().addAll(bootcamp.getConteudos());
+		bootcamp.getDevs().add(this);
+	}
+	public void  progredir() {
 		
+		Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
+		if(conteudo.isPresent()) {
+			this.conteudosConcluidos.add(conteudo.get());
+			this.conteudosInscritos.remove(conteudo.get());
+		}else {
+			System.err.println("Você não está inscrito em nenhum Conteúdo");
+		}
 	}
 	
-	public void calculoTotalXP() {}
+	public Double calculoTotalXP() {
+		return this.conteudosConcluidos.stream()
+				.mapToDouble(Conteudo::calcularXP)
+				.sum();
+	}
 	
 	public Conteudo exibirCursos() {return null;}
 
@@ -50,20 +66,20 @@ public class Dev implements Serializable{
 		this.nome = nome;
 	}
 
-	public Set<Conteudo> getMentorias() {
-		return mentorias;
+	public Set<Conteudo> getConteudosInscritos() {
+		return conteudosInscritos;
 	}
 
-	public void setMentorias(Set<Conteudo> mentorias) {
-		this.mentorias = mentorias;
+	public void setConteudosInscritos(Set<Conteudo> conteudosInscritos) {
+		this.conteudosInscritos = conteudosInscritos;
 	}
 
-	public Set<Conteudo> getCursos() {
-		return cursos;
+	public Set<Conteudo> getConteudosConcluidos() {
+		return conteudosConcluidos;
 	}
 
-	public void setCursos(Set<Conteudo> cursos) {
-		this.cursos = cursos;
+	public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
+		this.conteudosConcluidos = conteudosConcluidos;
 	}
 
 	@Override

@@ -16,7 +16,7 @@ public class Main {
 		
 		
 		System.out.println(curso01);
-		System.out.println("XP do Curso 01 = " + curso01.calcularXP(20D));
+		System.out.println("XP do Curso 01 = " + curso01.calcularXP());
 		System.out.println(curso02);
 		
 		System.out.println(mentoria01);

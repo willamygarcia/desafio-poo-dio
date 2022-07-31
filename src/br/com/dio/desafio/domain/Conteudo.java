@@ -14,7 +14,7 @@ public abstract class Conteudo implements Serializable{
 	
 	private String descricao;
 	
-	public abstract Double calcularXP(Double xp);
+	public abstract Double calcularXP();
 
 	public Integer getId() {
 		return id;

@@ -36,8 +36,8 @@ public class Curso extends Conteudo implements Serializable{
 		this.cargaHoraria = cargaHoraria;
 	}
 
-	public Double calcularXP(Double xp) {
-		Double XP_atual = getXP() + xp;
+	public Double calcularXP() {
+		Double XP_atual = getXP();
 		return XP_atual;
 	}
 
