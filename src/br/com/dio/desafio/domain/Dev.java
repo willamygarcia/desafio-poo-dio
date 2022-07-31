@@ -1,19 +1,17 @@
 package br.com.dio.desafio.domain;
 
-import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
-public class Dev implements Serializable{
+import br.com.dio.desafio.enumeration.Escolaridade;
+import br.com.dio.desafio.enumeration.TipoPessoa;
+
+public class Dev extends Pessoa{
 
 	private static final long serialVersionUID = 1L;
-	
-	private Integer id;
-	
-	private String nome;
-	
+
 	private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
 	
 	private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
@@ -21,10 +19,12 @@ public class Dev implements Serializable{
 	public Dev() {
 	}
 
-	public Dev(Integer id, String nome) {
-		super();
-		this.id = id;
-		this.nome = nome;
+	public Dev(Integer id, String nome, TipoPessoa tipoPessoa, String cpfCnpj, Escolaridade escolaridade) {
+		this.setId(id);
+		this.setNome(nome);
+		this.setTipoPessoa(tipoPessoa);
+		this.setCpfCnpj(cpfCnpj);
+		this.setEscolaridade(escolaridade);
 	}
 	
 	public void inscrincao(Bootcamp bootcamp) {
@@ -53,21 +53,6 @@ public class Dev implements Serializable{
 		return this.getConteudosInscritos();
 		}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 
 	public Set<Conteudo> getConteudosInscritos() {
 		return conteudosInscritos;
@@ -87,19 +72,7 @@ public class Dev implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Dev other = (Dev) obj;
-		return Objects.equals(id, other.id);
+		return Objects.hash(this.getId());
 	}
 	
 }

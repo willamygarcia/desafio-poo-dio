@@ -7,6 +7,8 @@ import br.com.dio.desafio.domain.Bootcamp;
 import br.com.dio.desafio.domain.Curso;
 import br.com.dio.desafio.domain.Dev;
 import br.com.dio.desafio.domain.Mentoria;
+import br.com.dio.desafio.enumeration.Escolaridade;
+import br.com.dio.desafio.enumeration.TipoPessoa;
 
 public class Main {
 	public static void main(String[] args) {
@@ -22,7 +24,7 @@ public class Main {
 		Bootcamp bootcamp02 = new Bootcamp(1, "Bootcamp Java Avançado.", "Melhor bootcamp Avançado do mundo!!!");
 		bootcamp02.getConteudos().addAll(Arrays.asList(curso01,curso02,mentoria01,mentoria02));
 		
-		Dev dev01 = new Dev(1, "Bia");
+		Dev dev01 = new Dev(1, "Bia", TipoPessoa.PESSOA_FISICA, "036.042.323-09", Escolaridade.ENSINO_SUPERIOR);
 		dev01.inscrincao(bootcamp01);
 		
 		System.out.println(dev01.exibirCursos());

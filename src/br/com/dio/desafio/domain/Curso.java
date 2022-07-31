@@ -1,7 +1,6 @@
 package br.com.dio.desafio.domain;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Curso extends Conteudo implements Serializable{
 
@@ -39,24 +38,6 @@ public class Curso extends Conteudo implements Serializable{
 	public Double calcularXP() {
 		
 		return getXP();
-	}
-
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(getId());
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Curso other = (Curso) obj;
-		return Objects.equals(getId(), other.getId());
 	}
 
 	@Override

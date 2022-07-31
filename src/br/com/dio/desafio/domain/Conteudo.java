@@ -1,6 +1,7 @@
 package br.com.dio.desafio.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public abstract class Conteudo implements Serializable{
 
@@ -42,6 +43,23 @@ public abstract class Conteudo implements Serializable{
 	
 	public Double getXP() {
 		return XP;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Conteudo other = (Conteudo) obj;
+		return Objects.equals(id, other.id);
 	}
 	
 	

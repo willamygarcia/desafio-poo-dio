@@ -2,7 +2,6 @@ package br.com.dio.desafio.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class Mentoria extends Conteudo implements Serializable{
 
@@ -32,23 +31,6 @@ public class Mentoria extends Conteudo implements Serializable{
 
 	public void setData(LocalDate data) {
 		this.data = data;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(getId());
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Mentoria other = (Mentoria) obj;
-		return Objects.equals(getId(), other.getId());
 	}
 
 	@Override
